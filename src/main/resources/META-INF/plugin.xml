@@ -1,19 +1,23 @@
 <idea-plugin>
-    <id>slak.translate-jump-to-definition</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>slak.ngx-translate-support</id>
+    <name>Ngx-Translate Support</name>
+    <vendor email="stefan.silviu.alexandru@gmail.com" url="https://github.com/slak44/intellij-ngx-translate-support">slak44</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+        Automatically create references for ngx-translate strings into i18n translation files.
+        This plugin enables jump-to-definition, adds minor syntax highlighting for the translate tokens, and
+        code completion.
+        <br/>
+        Accessors like <pre>TEST-STRING.SUBOBJECT.TEST123_TEST</pre> are currently auto-detected in Javascript files,
+        (and implicitly in Typescript and Angular templates).
     ]]></description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-    <depends>JavaScript</depends>
     <depends>org.intellij.intelliLang</depends>
+    <depends>JavaScript</depends>
     <depends>AngularJS</depends>
 
     <extensions defaultExtensionNs="com.intellij">
