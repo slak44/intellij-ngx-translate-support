@@ -1,2 +1,2 @@
-rootProject.name = "translate-jump-to-definition"
+rootProject.name = "intellij-ngx-translate-support"
 
