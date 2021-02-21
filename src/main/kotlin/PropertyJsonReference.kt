@@ -50,7 +50,6 @@ fun translationReferenceVariantsFor(project: Project, path: List<String>): List<
       .mapNotNull { (it.value as? JsonObject)?.children?.toList() }
       .flatten()
       .filterIsInstance<JsonProperty>()
-      .distinctBy { it.nameElement.text }
 }
 
 class PropertyJsonReference(
