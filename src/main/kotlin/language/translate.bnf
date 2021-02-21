@@ -1,0 +1,22 @@
+{
+  parserClass="language.TranslateParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Translate"
+  psiImplClassSuffix="Impl"
+  psiPackage="language"
+  psiImplPackage="language.impl"
+
+  elementTypeHolderClass="language.TranslateTypes"
+  elementTypeClass="language.TranslateElementType"
+  tokenTypeClass="language.TranslateTokenType"
+
+  psiImplUtilClass="language.TranslatePsiImplUtil"
+}
+
+json_selector ::= key (SEPARATOR key)*
+key ::= SUBKEY {
+  mixin="language.PathKeyLiteralImpl"
+  implements="language.PathKeyLiteral"
+  methods=[getValue]
+}

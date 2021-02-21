@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>slak.translate-jump-to-definition</id>
+    <name>Plugin display name here</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>JavaScript</depends>
+    <depends>org.intellij.intelliLang</depends>
+    <depends>AngularJS</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="ngx-translate property access" implementationClass="language.TranslateFileType"
+                  fieldName="INSTANCE" language="ngx-translate property access" extensions="ngxtranslateaccess"/>
+
+        <lang.parserDefinition language="ngx-translate property access" implementationClass="language.TranslateParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="ngx-translate property access" implementationClass="language.TranslateSyntaxHighlighter$Factory"/>
+        <completion.contributor language="Angular2" implementationClass="language.TranslateCompletionContributor"/>
+        <psi.referenceContributor language="ngx-translate property access" implementation="TranslateReferenceContributor"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="org.intellij.intelliLang">
+        <injectionConfig config="ngxInjection.xml"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
