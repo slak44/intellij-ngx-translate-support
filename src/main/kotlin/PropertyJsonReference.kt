@@ -1,6 +1,7 @@
+import com.intellij.icons.AllIcons
 import com.intellij.json.JsonFileType
-import com.intellij.json.psi.JsonObject
-import com.intellij.json.psi.JsonProperty
+import com.intellij.json.psi.*
+import com.intellij.navigation.ItemPresentation
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
@@ -8,6 +9,7 @@ import com.intellij.psi.search.FileTypeIndex
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiTreeUtil
 import language.PathKeyLiteral
+import javax.swing.Icon
 
 fun findByKey(project: Project, key: List<String>): List<JsonProperty> {
   val virtualFiles = FileTypeIndex.getFiles(JsonFileType.INSTANCE, GlobalSearchScope.allScope(project))
@@ -52,6 +54,40 @@ fun translationReferenceVariantsFor(project: Project, path: List<String>): List<
       .filterIsInstance<JsonProperty>()
 }
 
+class PresentableJsonProperty(property: JsonProperty) : JsonProperty by property {
+  override fun getPresentation(): ItemPresentation {
+    return object : ItemPresentation {
+      val containingFile = this@PresentableJsonProperty.containingFile.originalFile
+
+      override fun getPresentableText(): String {
+        val path = mutableListOf<String>()
+        PsiTreeUtil.treeWalkUp(this@PresentableJsonProperty, containingFile) { s, _ ->
+          if (s is JsonProperty) {
+            path += s.name
+          }
+
+          true
+        }
+        return path.reversed().joinToString(".")
+      }
+
+      override fun getLocationString(): String {
+        val document = PsiDocumentManager.getInstance(project).getDocument(containingFile)
+        val maybeLine = document?.getLineNumber(textOffset)
+        return if (maybeLine == null) {
+          containingFile.name
+        } else {
+          "${containingFile.name}:$maybeLine"
+        }
+      }
+
+      override fun getIcon(unused: Boolean): Icon {
+        return AllIcons.Nodes.Property
+      }
+    }
+  }
+}
+
 class PropertyJsonReference(
     element: PathKeyLiteral,
     textRange: TextRange,
@@ -65,7 +101,9 @@ class PropertyJsonReference(
     val path = currentElemPath(element as PathKeyLiteral, true)
     if (path.isEmpty()) return emptyArray()
 
-    return findByKey(element.project, path).map { PsiElementResolveResult(it) }.toTypedArray()
+    return findByKey(element.project, path).map {
+      PsiElementResolveResult(PresentableJsonProperty(it))
+    }.toTypedArray()
   }
 
   override fun getVariants(): Array<Any> {
