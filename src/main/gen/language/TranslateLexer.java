@@ -54,7 +54,7 @@ class TranslateLexer implements FlexLexer {
 
   /* The ZZ_CMAP_A table has 256 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\56\0\1\1\1\0\12\2\7\0\32\2\4\0\1\2\240\0");
+    "\55\0\1\2\1\1\1\0\12\2\7\0\32\2\4\0\1\2\240\0");
 
   /** 
    * Translates DFA states to action switch labels.
