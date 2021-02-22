@@ -18,5 +18,5 @@ json_selector ::= key (SEPARATOR key)*
 key ::= SUBKEY {
   mixin="language.PathKeyLiteralImpl"
   implements="language.PathKeyLiteral"
-  methods=[getValue]
+  methods=[getValue getName setName]
 }

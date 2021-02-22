@@ -26,6 +26,7 @@
 
         <lang.parserDefinition language="ngx-translate property access" implementationClass="language.TranslateParserDefinition"/>
         <lang.syntaxHighlighterFactory language="ngx-translate property access" implementationClass="language.TranslateSyntaxHighlighter$Factory"/>
+        <lang.refactoringSupport language="ngx-translate property access" implementationClass="TranslateRefactoringSupportProvider"/>
         <completion.contributor language="JavaScript" implementationClass="TranslateCompletionContributor"/>
         <psi.referenceContributor language="ngx-translate property access" implementation="TranslateReferenceContributor"/>
         <fileBasedIndex implementation="I18NFileIndex"/>

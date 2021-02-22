@@ -33,4 +33,16 @@ public class TranslateKeyImpl extends PathKeyLiteralImpl implements TranslateKey
     return TranslatePsiImplUtil.getValue(this);
   }
 
+  @Override
+  @Nullable
+  public String getName() {
+    return TranslatePsiImplUtil.getName(this);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement setName(@NotNull String newName) {
+    return TranslatePsiImplUtil.setName(this, newName);
+  }
+
 }

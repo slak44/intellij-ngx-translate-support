@@ -10,4 +10,10 @@ public interface TranslateKey extends PathKeyLiteral {
   @Nullable
   String getValue();
 
+  @Nullable
+  String getName();
+
+  @NotNull
+  PsiElement setName(@NotNull String newName);
+
 }
