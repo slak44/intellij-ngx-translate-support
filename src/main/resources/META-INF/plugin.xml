@@ -28,6 +28,7 @@
         <lang.syntaxHighlighterFactory language="ngx-translate property access" implementationClass="language.TranslateSyntaxHighlighter$Factory"/>
         <completion.contributor language="Angular2" implementationClass="TranslateCompletionContributor"/>
         <psi.referenceContributor language="ngx-translate property access" implementation="TranslateReferenceContributor"/>
+        <fileBasedIndex implementation="I18NFileIndex"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.intellij.intelliLang">

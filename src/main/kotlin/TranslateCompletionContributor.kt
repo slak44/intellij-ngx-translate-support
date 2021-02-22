@@ -1,7 +1,5 @@
 import com.intellij.codeInsight.completion.*
-import com.intellij.codeInsight.lookup.AutoCompletionPolicy
 import com.intellij.codeInsight.lookup.LookupElementBuilder
-import com.intellij.json.psi.JsonObject
 import com.intellij.lang.javascript.psi.JSLiteralExpression
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.refactoring.suggested.startOffset
@@ -21,15 +19,10 @@ private val basicProvider = object : CompletionProvider<CompletionParameters>() 
       result: CompletionResultSet
   ) {
     val toCurrent = getCurrentItem(parameters)
-    val path = if (toCurrent.isEmpty()) emptyList() else toCurrent.trimEnd('.').split('.')
 
-    val props = translationReferenceVariantsFor(parameters.position.project, path)
-    for (prop in props) {
-      val extraDot = if (prop.value is JsonObject) "." else ""
-      result.addElement(
-          LookupElementBuilder.create("$toCurrent${prop.name}$extraDot")
-              .withPsiElement(prop)
-              .withTypeText(prop.containingFile.name))
+    for (value in I18NFileIndex.valuesFor(toCurrent.trimEnd('.'), parameters.position.project)) {
+      val lookupElement = LookupElementBuilder.create(value)
+      result.addElement(lookupElement)
     }
   }
 }
