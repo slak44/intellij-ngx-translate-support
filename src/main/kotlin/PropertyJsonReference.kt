@@ -40,7 +40,7 @@ fun advanceElementStructure(parentRef: PsiElement, keyFragment: String): JsonPro
 fun currentElemPath(element: PathKeyLiteral, includeCurrent: Boolean): List<String> {
   val key = element.text
 
-  return PsiTreeUtil.getChildrenOfType(element.parent, PathKeyLiteral::class.java)
+  return PsiTreeUtil.getChildrenOfType(element.parent, PathKeyLiteral::class.java)!!
       .takeWhile { it.value != key }
       .map { it.value!! }
       .let { if (includeCurrent) it + key else it }
