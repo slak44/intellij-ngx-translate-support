@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "slak"
-version = "1.1-SNAPSHOT2"
+version = "1.1-SNAPSHOT3"
 
 repositories {
   mavenCentral()
@@ -16,7 +16,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  version = "2021.1"
+  version = "2021.2"
   type = "IU"
   setPlugins("JavaScript", "IntelliLang", "AngularJS")
 }
