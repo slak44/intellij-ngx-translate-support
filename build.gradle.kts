@@ -1,10 +1,10 @@
 plugins {
-  id("org.jetbrains.intellij") version "0.6.5"
-  kotlin("jvm") version "1.4.30"
+  id("org.jetbrains.intellij") version "1.1.4"
+  kotlin("jvm") version "1.5.21"
 }
 
 group = "slak"
-version = "1.1-SNAPSHOT3"
+version = "1.1-SNAPSHOT4"
 
 repositories {
   mavenCentral()
@@ -16,13 +16,13 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  version = "2021.2"
-  type = "IU"
-  setPlugins("JavaScript", "IntelliLang", "AngularJS")
+  version.set("2021.2")
+  type.set("IU")
+  plugins.set(listOf("JavaScript", "IntelliLang", "AngularJS"))
 }
 
 tasks.getByName<org.jetbrains.intellij.tasks.PatchPluginXmlTask>("patchPluginXml") {
-  changeNotes("""
+  changeNotes.set("""
       Add change notes here.<br>
       <em>most HTML tags may be used</em>""")
 }
