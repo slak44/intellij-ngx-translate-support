@@ -2,12 +2,13 @@ import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.lang.javascript.psi.JSLiteralExpression
 import com.intellij.patterns.PlatformPatterns
+import com.intellij.refactoring.suggested.startOffset
 import com.intellij.util.ProcessingContext
 
 private fun getCurrentItem(parameters: CompletionParameters): String {
   val text = (parameters.position.parent as JSLiteralExpression).stringValue!!
   // This cursor is usually +1 due to the string quote, but we drop chars below, so it's ok
-  val cursor = parameters.offset - parameters.position.startOffsetInParent
+  val cursor = parameters.offset - parameters.position.startOffset
   return text.substring(0, cursor).dropLastWhile { it != '.' }
 }
 
