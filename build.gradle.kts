@@ -1,6 +1,6 @@
 plugins {
-  id("org.jetbrains.intellij") version "1.1.4"
-  kotlin("jvm") version "1.5.21"
+  id("org.jetbrains.intellij") version "1.3.0"
+  kotlin("jvm") version "1.6.0"
 }
 
 group = "slak"
@@ -16,7 +16,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  version.set("2021.2")
+  version.set("2021.3")
   type.set("IU")
   plugins.set(listOf("JavaScript", "IntelliLang", "AngularJS"))
 }
