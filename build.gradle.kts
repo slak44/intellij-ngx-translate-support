@@ -1,10 +1,10 @@
 plugins {
-  id("org.jetbrains.intellij") version "1.3.0"
-  kotlin("jvm") version "1.6.0"
+  id("org.jetbrains.intellij") version "1.4.0"
+  kotlin("jvm") version "1.6.10"
 }
 
 group = "slak"
-version = "1.1-SNAPSHOT4"
+version = "1.1-SNAPSHOT5"
 
 repositories {
   mavenCentral()
