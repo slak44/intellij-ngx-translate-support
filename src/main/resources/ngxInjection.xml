@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="LanguageInjectionConfiguration">
     <injection language="ngx-translate property access" injector-id="js">
-        <display-name>translate pipe</display-name>
+        <display-name>ngx-translate token</display-name>
         <place><![CDATA[
-            jsLiteralExpression().withText(string().matches("'([A-Z0-9_-]+[.]?)+'"))
+            jsLiteralExpression().withText(string().matches("['\"]([A-Z0-9_-]+[.]?)+['\"]"))
+            ]]></place>
+    </injection>
+
+    <injection language="ngx-translate property access" injector-id="xml">
+        <display-name>ngx-translate token</display-name>
+        <place><![CDATA[
+            xmlAttribute().withValue(string().matches("([A-Z0-9_-]+[.]?)+"))
             ]]></place>
     </injection>
 </component>
