@@ -1,5 +1,6 @@
-# Intellij Ngx-Translate Support
+# IntelliJ ngx-translate Support
 
+<!-- Plugin description -->
 Automatically create references for ngx-translate strings into i18n translation
 files. This plugin enables jump-to-definition, adds minor syntax highlighting
 for the translate tokens, and code completion.
@@ -9,3 +10,4 @@ in Javascript files (including Typescript and Angular templates).
 
 The plugin considers `.json`s that have `i18n` in their path to be translation
 files.
+<!-- Plugin description end -->

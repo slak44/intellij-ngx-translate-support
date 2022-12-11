@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="intellij-ngx-translate-support:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="slak" external.system.module.type="sourceSet" external.system.module.version="1.1.1" version="4">
-  <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../../src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../src/main/gen" isTestSource="false" generated="true" />
-    </content>
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
