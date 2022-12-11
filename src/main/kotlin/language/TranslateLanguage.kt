@@ -39,7 +39,7 @@ class TranslateLexerAdapter : FlexAdapter(TranslateLexer(null))
 class TranslateIcons {
   companion object {
     @JvmStatic
-    val FILE = IconLoader.getIcon("/icons/jar-gray.png")
+    val FILE = IconLoader.getIcon("/icons/jar-gray.png", TranslateIcons::class.java.classLoader)
   }
 }
 

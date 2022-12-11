@@ -1,5 +1,6 @@
 {
   parserClass="language.TranslateParser"
+  parserUtilClass="language.TranslateParserUtil"
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
   psiClassPrefix="Translate"
