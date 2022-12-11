@@ -2,6 +2,8 @@
 
 # IntelliJ ngx-translate Support Changelog
 
+## [Unreleased]
+
 ## [1.1.1]
 
 - First version in changelog
