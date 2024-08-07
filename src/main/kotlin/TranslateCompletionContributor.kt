@@ -20,7 +20,7 @@ private val basicProvider = object : CompletionProvider<CompletionParameters>() 
   ) {
     val toCurrent = getCurrentItem(parameters)
 
-    for (value in I18NFileIndex.valuesFor(toCurrent.trimEnd('.'), parameters.position.project)) {
+    for (value in I18NFileIndex.Util.valuesFor(toCurrent.trimEnd('.'), parameters.position.project)) {
       val lookupElement = LookupElementBuilder.create(value)
       result.addElement(lookupElement)
     }

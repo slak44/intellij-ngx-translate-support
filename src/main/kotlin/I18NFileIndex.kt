@@ -12,7 +12,7 @@ import java.io.DataInput
 import java.io.DataOutput
 
 class I18NFileIndex : FileBasedIndexExtension<String, List<String>>() {
-  override fun getName(): ID<String, List<String>> = NAME
+  override fun getName(): ID<String, List<String>> = Util.NAME
 
   override fun getIndexer(): DataIndexer<String, List<String>, FileContent> = DataIndexer { fileContent ->
     val jsonObject = fileContent.psiFile.children.find { it is JsonObject } ?: return@DataIndexer emptyMap()
@@ -71,7 +71,7 @@ class I18NFileIndex : FileBasedIndexExtension<String, List<String>>() {
 
   override fun dependsOnFileContent(): Boolean = true
 
-  companion object {
+  object Util {
     val NAME = ID.create<String, List<String>>("slak.I18NFileIndex")
 
     fun valuesFor(key: String, project: Project): List<String> {

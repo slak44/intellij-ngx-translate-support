@@ -7,7 +7,7 @@ import language.TranslateKey
 
 class TranslateReferenceContributor : PsiReferenceContributor() {
   override fun registerReferenceProviders(registrar: PsiReferenceRegistrar) {
-    registrar.registerReferenceProvider(PlatformPatterns.psiElement(TranslateKey::class.java), object : PsiReferenceProvider() {
+    registrar.registerReferenceProvider(PlatformPatterns.psiElement(PathKeyLiteral::class.java), object : PsiReferenceProvider() {
       override fun getReferencesByElement(element: PsiElement, context: ProcessingContext): Array<PsiReference> {
         return arrayOf(PropertyJsonReference(element as PathKeyLiteral, TextRange(0, element.textLength)))
       }

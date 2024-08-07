@@ -1,6 +1,7 @@
 import com.intellij.icons.AllIcons
 import com.intellij.json.JsonFileType
-import com.intellij.json.psi.*
+import com.intellij.json.psi.JsonObject
+import com.intellij.json.psi.JsonProperty
 import com.intellij.navigation.ItemPresentation
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
@@ -54,7 +55,15 @@ fun translationReferenceVariantsFor(project: Project, path: List<String>): List<
       .filterIsInstance<JsonProperty>()
 }
 
-class PresentableJsonProperty(property: JsonProperty) : JsonProperty by property {
+class PresentableJsonProperty(private val property: JsonProperty) : JsonProperty by property {
+  override fun navigate(requestFocus: Boolean) {
+    property.navigate(requestFocus)
+  }
+
+  override fun canNavigate() = true
+
+  override fun canNavigateToSource() = true
+
   override fun getPresentation(): ItemPresentation {
     return object : ItemPresentation {
       val containingFile = this@PresentableJsonProperty.containingFile.originalFile
@@ -102,7 +111,7 @@ class PropertyJsonReference(
     if (path.isEmpty()) return emptyArray()
 
     return findByKey(element.project, path).map {
-      PsiElementResolveResult(PresentableJsonProperty(it))
+      PsiElementResolveResult(PresentableJsonProperty(it), true)
     }.toTypedArray()
   }
 
